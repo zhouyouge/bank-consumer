@@ -1,0 +1,23 @@
+server:
+  port: 8095
+spring:
+  application:
+    name: bank-consumer
+eureka:
+  client:
+    register-with-eureka: true #是否需要把自己注册到erueka注册中心，默认是true，这里不需要注册，因为本身就是注册中心
+    fetch-registry: true  #是否要从注册中心获取注册的服务，默认为true，这里不需要，因为自己就是注册中心
+    service-url:
+      defaultZone: http://root:123456@localhost:7776/eureka
+  instance:
+    prefer-ip-address: true
+#配置ribbon的负载均衡策略
+bank-provider:
+  ribbon:
+    NFLoadBalancerRuleClasssName: com.netflix.loadbalancer.weightedResponseTimeRule
+    ReadTimeout:
+      connectionTimeout: 2000
+#feign支持整合容错处理
+feign:
+  hystrix:
+    enabled: true

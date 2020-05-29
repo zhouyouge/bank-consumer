@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            alert("123");
+            var param={};
+            param.userName="admin";
+            param.password="123456";
+            $.ajax({
+                url:"login",
+                type:"get",
+                data:param,
+                dataType:"json",
+                success:function (result) {
+                    alert(result);
+
+                }
+            })
+
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>
